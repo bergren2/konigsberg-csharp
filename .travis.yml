@@ -7,7 +7,7 @@ dotnet: 2.1
 script:
   - dotnet restore
   - dotnet build
-  - dotnet test konigsberg-test
+  - dotnet test konigsberg-tests
 
 branches:
   only:
