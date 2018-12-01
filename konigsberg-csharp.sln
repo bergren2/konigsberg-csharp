@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonigsbergTests", "konigsberg-tests\KonigsbergTests.csproj", "{AB97F410-851D-4C5F-9C29-590971791E99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konigsberg", "konigsberg\konigsberg.csproj", "{3B23BFAF-7F7F-4881-A724-AFA97B84B826}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konigsberg", "konigsberg\Konigsberg.csproj", "{3B23BFAF-7F7F-4881-A724-AFA97B84B826}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
