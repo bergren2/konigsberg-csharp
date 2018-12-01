@@ -1,0 +1,17 @@
+language: csharp
+solution: konigsberg-csharp.sln
+
+mono: none
+dotnet: 2.1
+
+script:
+  - dotnet restore
+  - dotnet build
+  - dotnet test konigsberg-test
+
+branches:
+  only:
+    - master
+notifications:
+  email: false
+
