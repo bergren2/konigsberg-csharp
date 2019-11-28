@@ -1,6 +1,6 @@
 - name: start_sonarscanner
   service: app
-  command: >-
+  command: >
     dotnet-sonarscanner begin
         /k:${SONAR_PROJECT}
         /d:sonar.host.url=${SONAR_HOST}
@@ -14,7 +14,7 @@
   command: dotnet test konigsberg-tests
 - name: end_sonarscanner
   service: app
-  command: >-
+  command: >
     dotnet-sonarscanner end
         /d:sonar.login=${SONAR_TOKEN}
 
