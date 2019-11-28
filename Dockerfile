@@ -6,13 +6,5 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN apt-get update -qq && apt-get install -qq -y default-jre
 RUN dotnet tool install --global dotnet-sonarscanner --version 4.8.0
 
-ARG PR_BASE
-ARG PR_BRANCH
-ARG PR_ID
-ARG SONAR_HOST=https://sonarcloud.io
-ARG SONAR_ORG=bergren2
-ARG SONAR_PROJECT=bergren2_konigsberg-csharp
-ARG SONAR_TOKEN
-
 COPY . .
 RUN dotnet build

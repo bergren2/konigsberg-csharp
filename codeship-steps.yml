@@ -2,13 +2,11 @@
   service: app
   command: >
     dotnet-sonarscanner begin
-    /k:${SONAR_PROJECT}
-    /d:sonar.host.url=${SONAR_HOST}
-    /d:sonar.login=${SONAR_TOKEN}
-    /o:${SONAR_ORG}
-    /d:sonar.pullrequest.branch=${PR_BRANCH}
-    /d:sonar.pullrequest.base=${PR_BASE}
-    /d:sonar.pullrequest.key=${PR_ID}
+    /k:bergren2_konigsberg-csharp
+    /o:bergren2
+    /d:sonar.sources=.
+    /d:sonar.host.url=https://sonarcloud.io
+    /d:sonar.login=3d295fd45fa845d850d848def305fcff6a439c73
 - name: run_tests
   service: app
   command: dotnet test konigsberg-tests
