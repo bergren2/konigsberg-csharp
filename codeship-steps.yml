@@ -4,9 +4,11 @@
     dotnet-sonarscanner begin
     /k:bergren2_konigsberg-csharp
     /o:bergren2
-    /d:sonar.sources=.
     /d:sonar.host.url=https://sonarcloud.io
     /d:sonar.login=3d295fd45fa845d850d848def305fcff6a439c73
+- name: build
+  service: app
+  command: dotnet build # must build while scanner is running
 - name: run_tests
   service: app
   command: dotnet test konigsberg-tests
