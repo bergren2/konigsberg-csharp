@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0
 WORKDIR /app
 
 # Install SonarScanner
