@@ -1,8 +1,8 @@
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using static Konigsberg.Helpers.ResourceHelpers;
+#pragma warning disable CS8509
 
 namespace Konigsberg.Advent;
 
@@ -35,8 +35,6 @@ public sealed class Year2021Day2 : IAdventSolvable<int>
                 case Direction.Up:
                     depth -= magnitude;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
         return depth * position;
@@ -61,8 +59,6 @@ public sealed class Year2021Day2 : IAdventSolvable<int>
                 case Direction.Up:
                     aim -= magnitude;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
         return depth * position;
@@ -75,8 +71,7 @@ public sealed class Year2021Day2 : IAdventSolvable<int>
         {
             "forward" => Direction.Forward,
             "down"    => Direction.Down,
-            "up"      => Direction.Up,
-            _         => throw new ArgumentOutOfRangeException()
+            "up"      => Direction.Up
         };
         return new Command(dir, int.Parse(strings[1]));
     }
