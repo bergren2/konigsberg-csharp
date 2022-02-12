@@ -449,3 +449,4 @@ $RECYCLE.BIN/
 
 codeship.aes
 env
+*.lcov
