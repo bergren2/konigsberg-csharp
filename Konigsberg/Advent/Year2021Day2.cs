@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -23,19 +22,21 @@ public sealed class Year2021Day2 : IAdventSolvable<int>
     {
         var depth = 0;
         var position = 0;
-        foreach (var command in _commands)
+        foreach (var (direction, magnitude) in _commands)
         {
-            switch (command.Direction)
+            switch (direction)
             {
                 case Direction.Forward:
-                    position += command.Magnitude;
+                    position += magnitude;
                     break;
                 case Direction.Down:
-                    depth += command.Magnitude;
+                    depth += magnitude;
                     break;
                 case Direction.Up:
-                    depth -= command.Magnitude;
+                    depth -= magnitude;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
         return depth * position;
@@ -43,7 +44,28 @@ public sealed class Year2021Day2 : IAdventSolvable<int>
 
     public int SolvePart2()
     {
-        throw new System.NotImplementedException();
+        var depth = 0;
+        var position = 0;
+        var aim = 0;
+        foreach (var (direction, magnitude) in _commands)
+        {
+            switch (direction)
+            {
+                case Direction.Forward:
+                    position += magnitude;
+                    depth += aim * magnitude;
+                    break;
+                case Direction.Down:
+                    aim += magnitude;
+                    break;
+                case Direction.Up:
+                    aim -= magnitude;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        return depth * position;
     }
 
     private static Command MapToCommand(string commandString)
