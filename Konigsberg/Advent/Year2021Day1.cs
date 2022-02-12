@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using static Konigsberg.Helpers.ResourceHelpers;
-using Konigsberg.Interfaces;
 
 namespace Konigsberg.Advent
 {

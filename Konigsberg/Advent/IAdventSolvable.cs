@@ -1,4 +1,4 @@
-﻿namespace Konigsberg.Interfaces
+﻿namespace Konigsberg.Advent
 {
     public interface IAdventSolvable<T>
     {
