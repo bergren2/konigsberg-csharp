@@ -22,5 +22,5 @@ jobs:
       env:
         CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
       with:
-        coverageCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=coverage.lcov
+        coverageCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=coverage.lcov /p:ExcludeByAttribute=GeneratedCodeAttribute
         coverageLocations: ${{github.workspace}}/Konigsberg.Tests/coverage.lcov:lcov
