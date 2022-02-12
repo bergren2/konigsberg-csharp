@@ -20,5 +20,5 @@ jobs:
     - name: Run tests
       uses: paambaati/codeclimate-action@v3.0.0
       with:
-        coverageLocations: ${{github.workspace}}/*.lcov:lcov
         coverageCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=coverage.lcov
+        coverageLocations: ${{github.workspace}}/Konigsberg.Tests/coverage.lcov:lcov
