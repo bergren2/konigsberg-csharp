@@ -2,6 +2,7 @@
 {
     public interface IAdventSolvable<T>
     {
-        T Solve(string filename);
+        T SolvePart1();
+        T SolvePart2();
     }
 }
