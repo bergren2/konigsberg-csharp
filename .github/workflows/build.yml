@@ -19,6 +19,8 @@ jobs:
       run: dotnet build
     - name: Run tests
       uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
       with:
         coverageCommand: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=coverage.lcov
         coverageLocations: ${{github.workspace}}/Konigsberg.Tests/coverage.lcov:lcov
