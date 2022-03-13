@@ -12,9 +12,9 @@ public sealed class Problem20
     {
         _parens = new List<Paren>
         {
-            new Paren('(', ')'),
-            new Paren('[', ']'),
-            new Paren('{', '}'),
+            new('(', ')'),
+            new('[', ']'),
+            new('{', '}'),
         };
     }
 
