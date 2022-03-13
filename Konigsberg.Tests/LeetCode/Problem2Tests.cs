@@ -10,7 +10,7 @@ public sealed class Problem2Tests
     [InlineData(new[] { 0 },                   new[] { 0 },          new[] { 0 })]
     [InlineData(new[] { 0 },                   new[] { 7, 3 },       new[] { 7, 3 })]
     [InlineData(new[] { 9, 9, 9, 9, 9, 9, 9 }, new[] { 9, 9, 9, 9 }, new[] { 8, 9, 9, 9, 0, 0, 0, 1 })]
-    public void Test(int[] array1, int[] array2, int[] expected)
+    public void Solve(int[] array1, int[] array2, int[] expected)
     {
         var problem = new Problem2();
         var solution = problem.AddTwoNumbers(new ListNode(array1), new ListNode(array2));
