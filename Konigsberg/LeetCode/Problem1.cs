@@ -4,7 +4,7 @@ namespace Konigsberg.LeetCode;
 
 public sealed class Problem1
 {
-    public static int[] TwoSum(int[] nums, int target)
+    public int[] TwoSum(int[] nums, int target)
     {
         for (var i = 0; i < nums.Length; i++)
         {
@@ -18,6 +18,6 @@ public sealed class Problem1
                 }
             }
         }
-        throw new InvalidOperationException("We should never reach this with the given problem inputs");
+        throw new ArgumentException("We should never reach this with the given problem inputs");
     }
 }
