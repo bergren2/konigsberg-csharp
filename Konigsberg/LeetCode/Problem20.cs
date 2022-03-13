@@ -6,6 +6,18 @@ namespace Konigsberg.LeetCode;
 
 public sealed class Problem20
 {
+    private readonly List<Paren> _parens;
+
+    public Problem20()
+    {
+        _parens = new List<Paren>
+        {
+            new Paren('(', ')'),
+            new Paren('[', ']'),
+            new Paren('{', '}'),
+        };
+    }
+
     public bool IsValid(string s)
     {
         var regex = new Regex(@"^[\(\)\[\]\{\}]*$");
@@ -26,18 +38,19 @@ public sealed class Problem20
                     if (!charStack.Any()) return false;
 
                     var o = charStack.Pop();
-                    if (!(o == '(' && c == ')' ||
-                        o == '[' && c == ']' ||
-                        o == '{' && c == '}'))
+                    if (_parens.Single(x => x.Start == o).End != c)
                     {
                         return false;
                     }
                     break;
             }
-
-
         }
 
         return !charStack.Any();
     }
+
+    record Paren(
+        char Start,
+        char End
+    );
 }

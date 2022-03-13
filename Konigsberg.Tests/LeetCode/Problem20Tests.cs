@@ -11,7 +11,7 @@ public sealed class Problem20Tests
     [InlineData("(]", false)]
     [InlineData("[", false)]
     [InlineData("yo", false)]
-    public void Test(string s, bool expected)
+    public void Solve(string s, bool expected)
     {
         var problem = new Problem20();
         var solution = problem.IsValid(s);
