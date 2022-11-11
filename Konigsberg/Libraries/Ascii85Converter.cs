@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 
 namespace Konigsberg.Libraries;
@@ -8,13 +7,18 @@ public static class Ascii85Converter
     /// <summary>
     /// Big-endian byte array
     /// </summary>
-    /// <param name="paddedInput"></param>
-    /// <param name="padding"></param>
+    /// <param name="input"></param>
     /// <returns></returns>
-    private static string Encode(byte[] paddedInput, int padding)
+    private static string Encode(byte[] input)
     {
+        // pad input
+        var paddedLength = input.Length / 4 * 4;
+        if (paddedLength != input.Length) paddedLength += 4;
+        var padding = paddedLength - input.Length;
+        var paddedInput = new byte[paddedLength];
+        input.CopyTo(paddedInput, 0);
+
         var size = paddedInput.Length;
-        if (size % 4 != 0) throw new ArgumentException("Input needs to be padded to a multiple of 4", nameof(paddedInput));
         var returnString = string.Empty;
 
         for (var i = 0; i < size; i += 4)
@@ -41,13 +45,7 @@ public static class Ascii85Converter
         return returnString[..^padding];
     }
 
-    public static string Encode(string input)
-    {
-        var roundedLength = input.Length / 4 * 4;
-        if (roundedLength != input.Length) roundedLength += 4;
-        var paddedInput = input.PadRight(roundedLength, '\0');
-        return Encode(Encoding.ASCII.GetBytes(paddedInput), paddedInput.Length - input.Length);
-    }
+    public static string Encode(string input) => Encode(Encoding.ASCII.GetBytes(input));
 
     public static string Decode(string input)
     {
