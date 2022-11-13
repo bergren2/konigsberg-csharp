@@ -1,4 +1,3 @@
-using System;
 using Konigsberg.Libraries;
 using Xunit;
 
@@ -15,5 +14,16 @@ public sealed class Ascii85ConverterTests
     {
         var encoded = Ascii85Converter.Encode(input);
         Assert.Equal(output, encoded);
+    }
+
+    [Theory]
+    [InlineData("9jqo^", "Man ")]
+    [InlineData("9jqo^F*2M7", "Man sure")]
+    [InlineData("87cURD]j.8ATD?*", "Hello there!")]
+    [InlineData("@;[3+A7Qg#F_tT!EW", "an odd number")]
+    public void DecodeString(string input, string output)
+    {
+        var decoded = Ascii85Converter.Decode(input);
+        Assert.Equal(output, decoded);
     }
 }
