@@ -41,19 +41,8 @@ public static class Ascii85Converter
                 shift += 8;
             }
 
-            // calculate Base 85 values
-            var base85Array = new int[DECODING_GROUP_SIZE];
-
-            var s = bit32Value;
-            for (var j = 0; j < base85Array.Length; j++)
-            {
-                base85Array[j] = s % BASE;
-                s = (s - base85Array[j]) / BASE;
-            }
-
-            // add offset
-            var base85Bytes = base85Array.Select(x => (byte)(x + OFFSET)).Reverse().ToArray();
-            returnStream.Write(base85Bytes);
+            var base85Array = BuildBase85ArrayWithOffset(bit32Value);
+            returnStream.Write(base85Array);
         }
 
         // remove padding
@@ -86,20 +75,40 @@ public static class Ascii85Converter
                 power *= BASE;
             }
 
-            // calculate ASCII values
-            var asciiArray = new byte[ENCODING_GROUP_SIZE];
-            var modulo = byte.MaxValue + 1;
-            var s = bit32Value;
-            for (var j = 0; j < ENCODING_GROUP_SIZE; j++)
-            {
-                asciiArray[j] = (byte) (s % modulo);
-                s >>= 8;
-            }
-
-            returnStream.Write(asciiArray.Reverse().ToArray());
+            var asciiArray = BuildAsciiArray(bit32Value);
+            returnStream.Write(asciiArray);
         }
 
         return returnStream.ToArray()[..^paddingAmount];
+    }
+
+    private static byte[] BuildBase85ArrayWithOffset(int bit32Value)
+    {
+        // calculate Base 85 values
+        var base85Array = new int[DECODING_GROUP_SIZE];
+        for (var i = 0; i < base85Array.Length; i++)
+        {
+            base85Array[i] = bit32Value % BASE;
+            bit32Value = (bit32Value - base85Array[i]) / BASE;
+        }
+
+        // add offset
+        var base85Bytes = base85Array.Select(x => (byte)(x + OFFSET)).Reverse().ToArray();
+
+        return base85Bytes;
+    }
+
+    private static byte[] BuildAsciiArray(int bit32Value)
+    {
+        var asciiArray = new byte[ENCODING_GROUP_SIZE];
+        var modulo = byte.MaxValue + 1;
+        for (var i = 0; i < ENCODING_GROUP_SIZE; i++)
+        {
+            asciiArray[i] = (byte) (bit32Value % modulo);
+            bit32Value >>= 8;
+        }
+
+        return asciiArray.Reverse().ToArray();
     }
 
     private static byte[] BuildArrayWithValue(int arraySize, byte value)
