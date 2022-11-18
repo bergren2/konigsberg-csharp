@@ -12,7 +12,6 @@ public sealed record Layer
     private static readonly Regex InstructionsRegex = new(@"^==\[ Layer (?<level>\d)/6: (?<levelName>.+) \]=+$");
     private static readonly Regex PayloadRegex = new(@"^==\[ Payload \]=+$");
 
-    private readonly string _filePath;
     public string Name { get; }
     public LayerLevel Level { get; }
     public byte[] Payload { get; }
@@ -23,14 +22,9 @@ public sealed record Layer
     /// <param name="filePath">Instructions and payload file</param>
     public Layer(string filePath)
     {
-        _filePath = filePath;
+        var fileStream = File.OpenRead(filePath);
 
-        var fileStream = File.OpenRead(_filePath);
-
-        using var memoryStream = new MemoryStream();
-        fileStream.CopyTo(memoryStream);
-        memoryStream.Seek(0, SeekOrigin.Begin);
-        var reader = new StreamReader(memoryStream);
+        var reader = new StreamReader(fileStream);
 
         // assume the first line in the file is the instructions header
         var instructionsHeader = reader.ReadLine()!;
