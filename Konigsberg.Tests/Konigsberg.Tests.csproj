@@ -23,4 +23,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Konigsberg\Konigsberg.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="**/Resources/*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

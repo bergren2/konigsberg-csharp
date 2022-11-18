@@ -1,5 +1,7 @@
+using System.IO;
 using System.Linq;
 using System.Text;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace Konigsberg.Libraries;
 
@@ -10,16 +12,13 @@ public static class Ascii85Converter
     private const int ENCODING_GROUP_SIZE = 4;
     private const int DECODING_GROUP_SIZE = 5;
 
-    public static string Encode(string input) => Encode(Encoding.ASCII.GetBytes(input));
+    public static string Encode(string input) => Encoding.ASCII.GetString(Encode(Encoding.ASCII.GetBytes(input)));
 
-    public static string Decode(string input) => Decode(Encoding.ASCII.GetBytes(input));
+    public static string Decode(string input) => Encoding.ASCII.GetString(Decode(Encoding.ASCII.GetBytes(input)));
 
-    /// <summary>
-    /// Big-endian byte array
-    /// </summary>
-    /// <param name="input"></param>
+    /// <param name="input">Big-endian byte array</param>
     /// <returns></returns>
-    private static string Encode(byte[] input)
+    public static byte[] Encode(byte[] input)
     {
         // pad input
         var paddedLength = input.Length / ENCODING_GROUP_SIZE * ENCODING_GROUP_SIZE;
@@ -30,7 +29,7 @@ public static class Ascii85Converter
         input.CopyTo(paddedInput, 0);
         padding.CopyTo(paddedInput, paddedLength - paddingAmount);
 
-        var returnString = string.Empty;
+        using var returnStream = new MemoryStream();
         for (var i = 0; i < paddedInput.Length; i += ENCODING_GROUP_SIZE)
         {
             // calculate 32-bit value
@@ -54,14 +53,14 @@ public static class Ascii85Converter
 
             // add offset
             var base85Bytes = base85Array.Select(x => (byte)(x + OFFSET)).Reverse().ToArray();
-            returnString += Encoding.ASCII.GetString(base85Bytes);
+            returnStream.Write(base85Bytes);
         }
 
         // remove padding
-        return returnString[..^paddingAmount];
+        return returnStream.ToArray()[..^paddingAmount];
     }
 
-    private static string Decode(byte[] input)
+    public static byte[] Decode(byte[] input)
     {
         // pad input
         var paddedLength = input.Length / DECODING_GROUP_SIZE * DECODING_GROUP_SIZE;
@@ -75,7 +74,7 @@ public static class Ascii85Converter
         // remove offset
         var base85Array = paddedInput.Select(x => x - OFFSET).ToArray();
 
-        var returnString = string.Empty;
+        using var returnStream = new MemoryStream();
         for (var i = 0; i < base85Array.Length; i += DECODING_GROUP_SIZE)
         {
             // calculate 32-bit value
@@ -88,19 +87,19 @@ public static class Ascii85Converter
             }
 
             // calculate ASCII values
-            var asciiArray = new char[ENCODING_GROUP_SIZE];
+            var asciiArray = new byte[ENCODING_GROUP_SIZE];
             var modulo = byte.MaxValue + 1;
             var s = bit32Value;
             for (var j = 0; j < ENCODING_GROUP_SIZE; j++)
             {
-                asciiArray[j] = (char) (s % modulo);
+                asciiArray[j] = (byte) (s % modulo);
                 s >>= 8;
             }
 
-            returnString += string.Concat(asciiArray.Reverse());
+            returnStream.Write(asciiArray.Reverse().ToArray());
         }
 
-        return returnString[..^paddingAmount];
+        return returnStream.ToArray()[..^paddingAmount];
     }
 
     private static byte[] BuildArrayWithValue(int arraySize, byte value)
