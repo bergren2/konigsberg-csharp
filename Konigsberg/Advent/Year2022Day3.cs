@@ -28,11 +28,11 @@ public sealed class Year2022Day3 : IAdventSolvable
 
     private static int GetPriority(char c)
     {
-        const int LowercaseOffset = 96;
-        const int UppercaseOffset = 38;
+        const int LOWERCASE_OFFSET = 96;
+        const int UPPERCASE_OFFSET = 38;
 
         if (!char.IsLetter(c)) throw new ArgumentOutOfRangeException(nameof(c), c, "Argument is not a letter");
 
-        return char.IsLower(c) ? c - LowercaseOffset : c - UppercaseOffset;
+        return char.IsLower(c) ? c - LOWERCASE_OFFSET : c - UPPERCASE_OFFSET;
     }
 }
