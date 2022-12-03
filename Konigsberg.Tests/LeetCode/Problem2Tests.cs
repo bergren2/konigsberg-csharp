@@ -1,9 +1,8 @@
 using Konigsberg.LeetCode;
-using Xunit;
 
 namespace Konigsberg.Tests.LeetCode;
 
-public sealed class Problem2Tests
+public sealed class Problem2Tests : LeetCodeTests
 {
     [Theory]
     [InlineData(new[] { 2, 4, 3 },             new[] { 5, 6, 4 },    new[] { 7, 0, 8 })]
@@ -13,7 +12,7 @@ public sealed class Problem2Tests
     public void Solve(int[] array1, int[] array2, int[] expected)
     {
         var problem = new Problem2();
-        var solution = problem.AddTwoNumbers(new ListNode(array1), new ListNode(array2));
+        var solution = problem.AddTwoNumbers(new ListNode(array1), new ListNode(array2))!;
         Assert.Equal(expected, solution.ToArray());
     }
 }

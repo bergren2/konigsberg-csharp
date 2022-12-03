@@ -1,10 +1,9 @@
 using System;
 using Konigsberg.LeetCode;
-using Xunit;
 
 namespace Konigsberg.Tests.LeetCode;
 
-public sealed class Problem1Tests
+public sealed class Problem1Tests : LeetCodeTests
 {
     [Theory]
     [InlineData(new[] { 2, 7, 11, 15 }, 9, new[] { 0, 1 })]

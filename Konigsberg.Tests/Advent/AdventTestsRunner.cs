@@ -1,15 +1,15 @@
 using System;
 using Konigsberg.Advent;
-using Xunit;
 using static Konigsberg.Tests.Advent.AdventTestsRunner.ProblemPart;
 
 namespace Konigsberg.Tests.Advent;
 
+[Trait("Category", "Advent")]
 public sealed partial class AdventTestsRunner
 {
     [Theory]
     [ClassData(typeof(AdventProblemsEnumerator))]
-    public void Solve(IAdventSolvable<int> problem, ProblemPart part, int expectedResult)
+    public void Solve(IAdventSolvable problem, ProblemPart part, int expectedResult)
     {
         // arrange
         // act

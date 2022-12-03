@@ -1,12 +1,8 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using static Konigsberg.Helpers.ResourceHelpers;
 
 namespace Konigsberg.Advent
 {
-    public sealed class Year2021Day1 : IAdventSolvable<int>
+    public sealed class Year2021Day1 : IAdventSolvable
     {
         private readonly ReadOnlyCollection<int> _depths;
 

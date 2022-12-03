@@ -1,8 +1,8 @@
 ﻿namespace Konigsberg.Advent
 {
-    public interface IAdventSolvable<T>
+    public interface IAdventSolvable
     {
-        T SolvePart1();
-        T SolvePart2();
+        int SolvePart1();
+        int SolvePart2();
     }
 }

@@ -1,9 +1,8 @@
 using Konigsberg.LeetCode;
-using Xunit;
 
 namespace Konigsberg.Tests.LeetCode;
 
-public sealed class Problem1491Tests
+public sealed class Problem1491Tests : LeetCodeTests
 {
     [Theory]
     [InlineData(new[] { 4000, 3000, 1000, 2000 }, 2500.00000)]
