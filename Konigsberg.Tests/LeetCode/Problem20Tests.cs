@@ -2,7 +2,7 @@ using Konigsberg.LeetCode;
 
 namespace Konigsberg.Tests.LeetCode;
 
-public sealed class Problem20Tests
+public sealed class Problem20Tests : LeetCodeTests
 {
     [Theory]
     [InlineData("()", true)]
