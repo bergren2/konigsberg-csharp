@@ -1,8 +1,8 @@
 using Konigsberg.Libraries;
-using Xunit;
 
 namespace Konigsberg.Tests.Libraries;
 
+[Trait("Category", nameof(Libraries))]
 public sealed class Ascii85ConverterTests
 {
     [Theory]
