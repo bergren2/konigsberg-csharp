@@ -32,8 +32,10 @@ public sealed class Year2022Day1 : IAdventSolvable<int>
             .Select(x => x.Sum())
             .Max();
 
-    public int SolvePart2()
-    {
-        throw new System.NotImplementedException();
-    }
+    public int SolvePart2() =>
+        _calories
+            .Select(x => x.Sum())
+            .OrderBy(x => x)
+            .TakeLast(3)
+            .Sum();
 }

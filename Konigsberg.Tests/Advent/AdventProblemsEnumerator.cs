@@ -20,7 +20,9 @@ public sealed partial class AdventTestsRunner
             new object[] { new Year2021Day2("Year2021Day2_1.txt"), Part2, 900 },
             new object[] { new Year2021Day2("Year2021Day2_2.txt"), Part2, 1408487760 },
             new object[] { new Year2022Day1("Year2022Day1_1.txt"), Part1, 24000 },
-            new object[] { new Year2022Day1("Year2022Day1_2.txt"), Part1, 71502 }
+            new object[] { new Year2022Day1("Year2022Day1_2.txt"), Part1, 71502 },
+            new object[] { new Year2022Day1("Year2022Day1_1.txt"), Part2, 45000 },
+            new object[] { new Year2022Day1("Year2022Day1_2.txt"), Part2, 208191 },
         };
 
         public IEnumerator<object[]> GetEnumerator() => _problems.GetEnumerator();
