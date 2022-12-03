@@ -1,5 +1,3 @@
-using System.IO;
-
 namespace Konigsberg.Helpers;
 
 public static class ResourceHelpers

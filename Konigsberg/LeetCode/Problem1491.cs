@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace Konigsberg.LeetCode;
 
 public sealed class Problem1491
