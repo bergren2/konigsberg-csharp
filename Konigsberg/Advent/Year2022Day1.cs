@@ -2,7 +2,7 @@
 
 namespace Konigsberg.Advent;
 
-public sealed class Year2022Day1 : IAdventSolvable<int>
+public sealed class Year2022Day1 : IAdventSolvable
 {
     private readonly IEnumerable<IEnumerable<int>> _calories;
 
