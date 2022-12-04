@@ -4,7 +4,7 @@ using static Konigsberg.Tests.Advent.AdventTestsRunner.ProblemPart;
 
 namespace Konigsberg.Tests.Advent;
 
-[Trait("Category", "Advent")]
+[Trait("Category", nameof(Advent))]
 public sealed partial class AdventTestsRunner
 {
     [Theory]

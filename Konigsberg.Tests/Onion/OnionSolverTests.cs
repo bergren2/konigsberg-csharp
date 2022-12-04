@@ -1,9 +1,9 @@
 ﻿using Konigsberg.Onion;
-using Xunit;
 using static Konigsberg.Helpers.ResourceHelpers;
 
 namespace Konigsberg.Tests.Onion;
 
+[Trait("Category", nameof(Onion))]
 public sealed class OnionSolverTests
 {
     [Fact]

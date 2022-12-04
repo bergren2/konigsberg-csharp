@@ -10,4 +10,4 @@
 
 ## Test
 
-    $ dotnet test
+    $ dotnet test --filter "Category=Advent"
