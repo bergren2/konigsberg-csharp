@@ -9,7 +9,7 @@ public sealed partial class AdventTestsRunner
 {
     [Theory]
     [ClassData(typeof(AdventProblemsEnumerator))]
-    public void Solve(IAdventSolvable problem, ProblemPart part, int expectedResult)
+    public void Solve<T>(IAdventSolvable<T> problem, ProblemPart part, T expectedResult)
     {
         // arrange
         // act

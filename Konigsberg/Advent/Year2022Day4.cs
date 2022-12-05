@@ -4,7 +4,7 @@ using Konigsberg.Libraries;
 
 namespace Konigsberg.Advent;
 
-public sealed class Year2022Day4 : IAdventSolvable
+public sealed class Year2022Day4 : IAdventSolvable<int>
 {
     private readonly IEnumerable<(Range, Range)> _assignments;
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Konigsberg.Advent;
 
-public sealed class Year2022Day2 : IAdventSolvable
+public sealed class Year2022Day2 : IAdventSolvable<int>
 {
     private readonly IEnumerable<(string, string)> _rounds;
 
