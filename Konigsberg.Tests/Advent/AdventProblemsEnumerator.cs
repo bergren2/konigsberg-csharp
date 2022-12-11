@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Konigsberg.Advent;
 using static Konigsberg.Tests.Advent.AdventTestsRunner.ProblemPart;
+// ReSharper disable StringLiteralTypo
 
 namespace Konigsberg.Tests.Advent;
 
@@ -45,6 +46,11 @@ public sealed partial class AdventTestsRunner
             new object[] { new Year2022Day4("Year2022Day4_2.txt"), Part1, 580 },
             new object[] { new Year2022Day4("Year2022Day4_1.txt"), Part2, 4 },
             new object[] { new Year2022Day4("Year2022Day4_2.txt"), Part2, 895 },
+
+            new object[] { new Year2022Day5("Year2022Day5_1.txt"), Part1, "CMZ" },
+            new object[] { new Year2022Day5("Year2022Day5_2.txt"), Part1, "ZWHVFWQWW" },
+            new object[] { new Year2022Day5("Year2022Day5_1.txt"), Part2, "MCD" },
+            new object[] { new Year2022Day5("Year2022Day5_2.txt"), Part2, "HZFZCCWWV" },
         };
 
         public IEnumerator<object[]> GetEnumerator() => _problems.GetEnumerator();
