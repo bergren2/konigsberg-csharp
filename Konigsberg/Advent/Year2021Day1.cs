@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 
 namespace Konigsberg.Advent
 {
-    public sealed class Year2021Day1 : IAdventSolvable
+    public sealed class Year2021Day1 : IAdventSolvable<int>
     {
         private readonly ReadOnlyCollection<int> _depths;
 

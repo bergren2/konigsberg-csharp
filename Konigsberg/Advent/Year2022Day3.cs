@@ -2,7 +2,7 @@
 
 namespace Konigsberg.Advent;
 
-public sealed class Year2022Day3 : IAdventSolvable
+public sealed class Year2022Day3 : IAdventSolvable<int>
 {
     private readonly string[] _rucksacks;
     public Year2022Day3(string filename)

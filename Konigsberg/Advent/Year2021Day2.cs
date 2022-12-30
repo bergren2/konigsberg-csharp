@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Konigsberg.Advent;
 
-public sealed class Year2021Day2 : IAdventSolvable
+public sealed class Year2021Day2 : IAdventSolvable<int>
 {
     private readonly ReadOnlyCollection<Command> _commands;
 
