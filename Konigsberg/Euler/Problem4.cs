@@ -1,5 +1,7 @@
 using System;
 
+using Konigsberg.Libraries;
+
 namespace Konigsberg.Euler;
 
 public sealed class Problem4 : IEulerSolvable<int>
@@ -21,25 +23,10 @@ public sealed class Problem4 : IEulerSolvable<int>
             for (var j = i; j < upperBound; j++)
             {
                 var n = i * j;
-                if (IsPalindromic(n) && n > largest) largest = n;
+                if (n.IsPalindromic() && n > largest) largest = n;
             }
         }
 
         return largest;
-    }
-
-    internal static bool IsPalindromic(int n)
-    {
-        var s = n.ToString();
-        var length = s.Length;
-        for (var i = 0; i < length / 2; i++)
-        {
-            if (s[i] != s[length - 1 - i])
-            {
-                return false;
-            }
-        }
-
-        return true;
     }
 }
