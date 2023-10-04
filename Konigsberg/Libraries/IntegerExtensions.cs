@@ -32,7 +32,7 @@ public static class IntegerExtensions
     /// <returns></returns>
     public static Dictionary<int, int> PrimeFactorization(this int n)
     {
-        if (n <= 1) throw new ArgumentException(nameof(n), "Must be 2 or greater.");
+        if (n <= 1) throw new ArgumentException("Must be 2 or greater.", nameof(n));
 
         var factorization = new Dictionary<int, int>();
 
@@ -62,16 +62,12 @@ public static class IntegerExtensions
             var isPrime = true; // default
             for (var j = 2; j <= rootLimit; j++)
             {
-                if (primeCandidate % j == 0)
+                if (!isPrime || primeCandidate % j != 0)
                 {
-                    foreach (var p in primes)
-                    {
-                        if (j % p == 0)
-                        {
-                            isPrime = false;
-                        }
-                    }
+                    continue;
                 }
+
+                isPrime = primes.All(p => j % p != 0);
             }
             if (isPrime) primes.Add(primeCandidate);
         }
