@@ -2,7 +2,7 @@ using Konigsberg.Euler;
 
 namespace Konigsberg.Tests.Euler;
 
-public sealed class Problem3Tests
+public sealed class Problem3Tests : EulerTests
 {
     [Theory]
     [InlineData(13195, 29)]

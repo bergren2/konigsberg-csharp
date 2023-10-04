@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+
 using Konigsberg.Libraries;
 
 namespace Konigsberg.Tests.Libraries;
 
+[Trait("Category", nameof(Libraries))]
 public sealed class IntegerExtensionsTests
 {
     [Theory]
@@ -19,5 +22,13 @@ public sealed class IntegerExtensionsTests
     {
         var actual = n.IsPalindromic();
         Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void PrimesUpThruTest()
+    {
+        var expectedPrimes = new List<int> { 2, 3, 5, 7, 11 };
+        var primes = IntegerExtensions.PrimesUpThru(11);
+        Assert.Equal(expectedPrimes, primes);
     }
 }
