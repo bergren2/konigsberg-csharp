@@ -18,4 +18,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Konigsberg.Tests" />
+  </ItemGroup>
 </Project>
