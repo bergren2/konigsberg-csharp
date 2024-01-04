@@ -51,6 +51,11 @@ public sealed partial class AdventTestsRunner
             new object[] { new Year2022Day5("Year2022Day5_2.txt"), Part1, "ZWHVFWQWW" },
             new object[] { new Year2022Day5("Year2022Day5_1.txt"), Part2, "MCD" },
             new object[] { new Year2022Day5("Year2022Day5_2.txt"), Part2, "HZFZCCWWV" },
+
+            new object[] { new Year2023Day1("Year2023Day1_1.txt"), Part1, 142 },
+            new object[] { new Year2023Day1("Year2023Day1_2.txt"), Part1, 55386 },
+            new object[] { new Year2023Day1("Year2023Day1_3.txt"), Part2, 281 },
+            new object[] { new Year2023Day1("Year2023Day1_2.txt"), Part2, 54824 },
         };
 
         public IEnumerator<object[]> GetEnumerator() => _problems.GetEnumerator();
